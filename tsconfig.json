@@ -15,6 +15,6 @@
 		"noImplicitReturns": true,
 		"skipLibCheck": true
 	},
-	"include": ["src", "public", "index.ts", "CSS"]
+	"include": ["src", "public", "index.ts", "CSS", "JS"]
 }
 
