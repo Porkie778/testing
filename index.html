@@ -4,13 +4,66 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/src/style.css" />
-		<title>Testing Platform</title>
+		<link rel="shortcut icon" href="/src/images/BB.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="/src/CSS/common.css" />
+		<link rel="stylesheet" href="/src/CSS/style.css" />
+
+		<title>Home | Benjamin Bruce</title>
 	</head>
 	<body>
-		<h1>This is the basics of Node.js</h1>
-		<a href="./contact" class="nav-link">Contact</a>
-		<a href="./moon" class="nav-link">Moon</a>
+		<div id="nav-placeholder"></div>
+		<main id="main" class="wrapper">
+			<div class="page" id="card-1">
+				<img src="/src/images/logo-bb.svg" alt="Icon" id="logo-white" />
+				<img src="/src/images/florian-olivo-4hbJ-eymZ1o-unsplash.png" alt="Coding Screen" id="cover-image" />
+			</div>
+			<div class="page" id="card-2">
+				<div class="card-column">
+					<h1 id="card-2-heading">Why learn to Code?</h1>
+					<p>
+						Hey there! If you're thinking about whether or not to start coding, let me tell you, it's worth giving
+						it a shot. While technology might not be your cup of tea, coding offers a plethora of benefits that go
+						beyond just understanding tech. For starters, coding can improve your problem-solving skills and boost
+						your creativity. It can also help you gain a deeper understanding of how things work and develop a
+						logical thought process. Additionally, coding skills are highly sought after in many industries, so it
+						can be a valuable asset to have on your resume. And who knows, you might even discover a passion for
+						coding and tech along the way. So, give coding a chance and see where it takes you! <br /><br />
+						Programming is an industry that is constantly evolving, with new career paths appearing every day that
+						may suit you. It may seem daunting at first when you open an editor and freeze in front of all the
+						options in front of you, but remember that everyone starts somewhere. The best way to maintain
+						motivation in learing a programming language is think of something that you'd like to do, then learn how
+						to do it.
+					</p>
+					<img src="/src/images/blue to Pink-wave.svg" alt="waves pink and blue" />
+				</div>
+				<img id="humaans-1" src="/src/images/humaans.svg" alt="" />
+			</div>
+			<div class="page" id="card-3">
+				<h1 id="card-3-heading">HTML - HyperText Markup Language</h1>
+				<img src="/src/images/card-3.svg" alt="Waves" />
+				<p>
+					HTML is the building block of the internet. It was created by Tim Berners-lee when he was developing the
+					internet in <em>1983</em>
+				</p>
+			</div>
+			<div class="loader"></div>
+			<script src="https://kit.fontawesome.com/c21b7427e3.js" crossorigin="anonymous"></script>
+			<script
+				src="https://code.jquery.com/jquery-3.6.4.min.js"
+				integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+				crossorigin="anonymous"></script>
+			<script>
+				$(function () {
+					$('#nav-placeholder').load('/html/nav.html');
+				});
+			</script>
+			<div id="loader"></div>
+		</main>
+		<script src="https://kit.fontawesome.com/c21b7427e3.js" crossorigin="anonymous"></script>
+		<script
+			src="https://code.jquery.com/jquery-3.6.4.min.js"
+			integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+			crossorigin="anonymous"></script>
+		<script src="/src/JS/main.js"></script>
 	</body>
 </html>
-

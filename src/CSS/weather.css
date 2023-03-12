@@ -1,0 +1,56 @@
+@import '/common.css';
+:root {
+	font-size: 16px;
+}
+
+#close-button {
+	position: absolute;
+	text-decoration: none;
+	font-size: 3rem;
+	color: var(--black);
+	top: 1rem;
+	right: 1rem;
+}
+
+#selector {
+	padding: 1rem;
+	position: absolute;
+}
+#selector > * {
+	font-size: 3rem;
+}
+
+#city-select {
+	outline: transparent;
+	background-color: hsla(0, 0%, 100%, 0);
+	border: transparent;
+}
+
+#city-select > option {
+	font-size: 2rem;
+}
+
+#desc {
+	font-size: 3rem;
+	text-transform: capitalize;
+}
+
+#temp {
+	font-size: 10rem;
+}
+
+#location {
+	font-size: 2rem;
+}
+
+#weather {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	font-family: 'Roboto', sans-serif;
+	font-size: 4rem;
+	background-image: linear-gradient(to right top, #99bbcb, #a5c7d7, #b1d4e2, #bde0ee, #c9edfa);
+}

@@ -1,0 +1,66 @@
+:root {
+	font-size: 62.5%;
+}
+
+body {
+	/* background-color: var(--white); */
+	background-image: url(../images/form-bg.svg);
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+main {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 12rem;
+	background-color: var(--secondary-color);
+	border-radius: 5rem;
+	-webkit-border-radius: 5rem;
+	-moz-border-radius: 5rem;
+	-ms-border-radius: 5rem;
+	-o-border-radius: 5rem;
+	box-shadow: 3px 3px 0px hsl(230, 79%, 20%);
+}
+
+#form-heading {
+	color: var(--white);
+	font-size: 6rem;
+	font-family: 'Roboto';
+	text-transform: uppercase;
+	margin-bottom: 3rem;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+form > input,form>select {
+	margin-bottom: 2rem;
+	width: 90%;
+	align-self: center;
+	font-size: 3rem;
+	outline: transparent;
+	padding: 2rem;
+	height: 6rem;
+	border: 0.5rem var(--main-color) solid;
+	border-radius: 2rem;
+	-webkit-border-radius: 2rem;
+	-moz-border-radius: 2rem;
+	-ms-border-radius: 2rem;
+	-o-border-radius: 2rem;
+}
+
+form > select{
+	padding: 0;
+	padding-left: 2rem;
+	font-size: 3rem;
+}
