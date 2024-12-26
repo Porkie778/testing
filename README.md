@@ -5,6 +5,7 @@
 |Headings|
 |---|
 | [Design](#design)|
+| [js](#**/static/js**) |
 
 ## Description:
 
