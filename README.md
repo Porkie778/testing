@@ -297,7 +297,17 @@ This file was downloaded as part of the *Lightbox2* plugin. This file also bundl
 
 #### loader.js
 
-This file listens for when the DOM is loaded, then hides the loading animation overlay.
+This script usese the `window.onload` method to ensure all media is loaded, then hides the loading animation overlay.
+
+```javascript
+window.onload = function() {
+    const main = document.querySelector("main");
+    const loader = document.getElementById("loader");
+    loader.style.visibility = "hidden";  // Hide the loader
+    document.documentElement.style.overflow = "auto";  // Enable scrolling
+    main.style.visibility = "visible";
+};
+```
 
 #### scroll.js
 
@@ -322,7 +332,7 @@ It also flips the icon on the button to show the grid.
 #### tracks.js
 
 This file shows the clear button beside any of the fields that have data in them in the form on `/tracks`.
-It also uses `localStorage` to store the position the user has scrolled from the top. It also has code to prevent a text box from submitting the form
+It also uses `localStorage` to store the position the user has scrolled from the top. It also has code to prevent a text box from submitting the form.
 ```javascript
 const region = [
     document.getElementById("regionFilter"),
@@ -338,3 +348,8 @@ const type = [
     ];
 ```
 ## requirements.txt
+
+This file was auto-generated using:
+```bash
+pip freeze > requirements.txt
+```
