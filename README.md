@@ -7,8 +7,9 @@
 | [Description](#Description:)|
 | [Design](#design)|
 | [Tools / Software used](#tools)|
+| [Resources](#resources)|
 | [app.py](#app)|
-| &emsp;&emsp;["/" route](#index)|
+| &emsp;&emsp;["/" route](#index_route)|
 | &emsp;&emsp;["/tracks" route](#tracks)|
 | &emsp;&emsp;["/track/\<int:id\>/" route](#index)|
 | [Templates](#templates)|
@@ -78,10 +79,10 @@ I settled on the colours:
 This function makes a human readable date from two separate dates.
 Two dates like 2024-12-21 and 2024-12-23 will be converted to `21 - 23 Dec`. I had to read the `datetime` python library documentation to use this effectively.
 
-#### <a name="index">@app.route("/")</a>
+#### <a name="index_route">@app.route("/")</a>
 This route simply returns the `index.html` file in the **`/templates`** folder.
 
-#### <a name="tracks">app.route("/tracks")</a>
+#### <a name="tracks">@app.route("/tracks")</a>
 The "/tracks" route serves the purpose of displaying a list of Formula 1 tracks for the 2025 calendar in a visually organized grid layout (using `display: grid;`). This list is dynamically retrieved from the `formula.db` database and specifically draws data from the `tracks` and `track_info` tables. The inclusion of both tables allows users to filter and sort the track list according to their preferences, enhancing the functionality and interactivity of the feature.
 
 User preferences for filtering and sorting are provided through the `#trackForm` form, which sends a **GET** request to the "/tracks" route. The request appends the form inputs to the URL as query parameters. These inputs are then used to construct the SQL query dynamically by concatenating query strings based on the criteria selected by the user. The construction of the query involves unpacking variables (*using `*params`*) to pass them securely to the database execution function.
@@ -146,7 +147,22 @@ The user can sort by:
 - Number of laps
 
 *The user can sort by any of these categories Ascending OR Descending via 2 select boxes*.
-
+### <a name="track">@app.route("/track/\<int:id\>/")</a>
+This route returns `track.html` with the placeholders in the template being replaced with the relevant information of the track based on the `<int:id>` that was passed into the url. It also queries the `winners` SQL table to find the most recent winning drivers at this track.
+```python
+@app.route("/track/<int:id>/")
+def goToTrack(id):
+    track = db.execute("SELECT * FROM tracks JOIN track_info ON id=track_id WHERE id = ?",id)[0]
+    intro = track["intro"].split("\n\n")
+    winners = db.execute("SELECT * FROM winners WHERE track_id = ?",id)
+    track["svg_path"] = f'SVG_TRACKS/track_{id}.html'
+    return render_template(
+        "track.html",
+        track=track,
+        winners=winners,
+        intro=intro
+        )
+```
 
 ## <a name="templates">**/templates**</a>
 
