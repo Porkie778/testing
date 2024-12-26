@@ -4,7 +4,7 @@
 ## INDEX
 |Headings|
 |---|
-| [Description](#Design-Decisions)|
+| [Design](#design)|
 
 ## Description:
 
@@ -40,7 +40,7 @@ The SQL back-end database displays facts about all current tracks on the F1 cale
 <br>
 
 
-# Design-Decisions
+# <a name="design">Design Decisions</a>
 
 From the outset, I wanted to have a modern look to the website, so I opted to go for a dark colour background to match with modern design trends.
 I used *Typescale* to get the right difference in font sizes between the different heading tags. I decided on using the perfect fourth scale. This meant the headings didn't get too large and unweildy on smaller screen sizes like mobile.
