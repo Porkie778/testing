@@ -1,23 +1,5 @@
 # Discover F1
-#### Video Demo:  <URL HERE>
-
-## INDEX
-|Headings|
-|---|
-| [Description](#Description:)|
-| [Design](#design)|
-| [Tools / Software used](#tools)|
-| [Resources](#resources)|
-| [app.py](#app)|
-| &emsp;&emsp;["/" route](#index_route)|
-| &emsp;&emsp;["/tracks" route](#tracks)|
-| &emsp;&emsp;["/track/\<int:id\>/" route](#index)|
-| [Templates](#templates)|
-| &emsp;&emsp;[layout.html](#layout.html)|
-| &emsp;&emsp;[index.html](#index.html)|
-| &emsp;&emsp;[tracks.html](#tracks.html)|
-| &emsp;&emsp;[track.html](#track.html)|
-| [static](#static)|
+#### Video Demo:  [https://youtu.be/vcIxMwm4ePY?si=PHPii_jHanMbSTXa](https://youtu.be/vcIxMwm4ePY?si=PHPii_jHanMbSTXa)
 
 ## Description:
 
@@ -29,7 +11,11 @@ By focusing on the excitement, the rivalries, and the human stories that unfold 
 
 The SQL back-end database displays facts about all current tracks on the F1 calendar for 2025. Each page only shows the necessary amount of information to enjoy the upcoming race without feeling lost to the historical importance of a given race or any notable areas on the track where overtaking is common.
 
-### <a name="tools">Tools / Websites I used</a>
+### Things I learned
+
+I had to learn or improve various skills during CS50's final project. I had to improve my understanding of JavaScript to help implement certain features like my `#scrollToTop` button as well as my loading animation. I also learnt more about the flask routing options that I used in the `/track/<int:id>/` route to pass in data to the route via hyperlink.
+
+### Tools / Websites I used
 | Tool | Purpose |
 | ---- | ------- |
 | [Figma](https://www.figma.com) | Design of graphics and prototyping|
@@ -39,10 +25,10 @@ The SQL back-end database displays facts about all current tracks on the F1 cale
 | [Typescale](https://typescale.com/) | Using perfect fourth ratio for font-sizing|
 | [Brandfetch](https://brandfetch.com/) | Matching the colours of the official brand|
 
-### <a name="resources">Resources</a>
+### Resources
 | Site | Info |
 | ---- | ------- |
-| [Formula 1](https://www.formula1.com/) | Offical Formula 1 website for up to dat track statistics |
+| [Formula 1](https://www.formula1.com/) | Offical Formula 1 website for up to data track statistics |
 | [Stats F1](https://www.statsf1.com/en/circuits.aspx) | For any other additional info about a track |
 | [Formula 1 Tickets](https://tickets.formula1.com/en) | Used to retrieve some assets like track svgs and country flags |
 
@@ -53,20 +39,19 @@ The SQL back-end database displays facts about all current tracks on the F1 cale
 <br/>
 
 
-# <a name="design">Design Decisions</a>
+# Design Decisions
 
 From the outset, I wanted to have a modern look to the website, so I opted to go for a dark colour background to match with modern design trends.
-I used *Typescale* to get the right difference in font sizes between the different heading tags. I decided on using the perfect fourth scale. This meant the headings didn't get too large and unweildy on smaller screen sizes like mobile.
+I used *Typescale* to get the appropriate scaling in font sizes between the different heading tags. I decided on using the perfect fourth scale. I chose this scale because this meant the headings didn't get too large and unweildy on smaller screen sizes like mobile.
 I used *Brandfetch* to get the colours from their website to make the website feel familiar to the user if they have already visited [https://www.formula1.com](https://www.formula1.com).
 I settled on the colours:
 - Primary colour: `#E10600`
 - Text colour: `#FCFCFC`
 - Background colour: `#15151E`
 
-
 # Code Breakdown
 
-## <a name="app">**app.py**</a>
+## **app.py**
 
 #### Routes
 - `/`
@@ -76,13 +61,12 @@ I settled on the colours:
 
 #### formatDate()
 
-This function makes a human readable date from two separate dates.
-Two dates like 2024-12-21 and 2024-12-23 will be converted to `21 - 23 Dec`. I had to read the `datetime` python library documentation to use this effectively.
+This function makes a human readable date from two separate dates. Two dates like 2024-12-21 and 2024-12-23 will be converted to `21 - 23 Dec`. I had to read the `datetime` python library documentation to use this effectively.
 
-#### <a name="index_route">@app.route("/")</a>
+#### @app.route("/")
 This route simply returns the `index.html` file in the **`/templates`** folder.
 
-#### <a name="tracks">@app.route("/tracks")</a>
+#### @app.route("/tracks")
 The "/tracks" route serves the purpose of displaying a list of Formula 1 tracks for the 2025 calendar in a visually organized grid layout (using `display: grid;`). This list is dynamically retrieved from the `formula.db` database and specifically draws data from the `tracks` and `track_info` tables. The inclusion of both tables allows users to filter and sort the track list according to their preferences, enhancing the functionality and interactivity of the feature.
 
 User preferences for filtering and sorting are provided through the `#trackForm` form, which sends a **GET** request to the "/tracks" route. The request appends the form inputs to the URL as query parameters. These inputs are then used to construct the SQL query dynamically by concatenating query strings based on the criteria selected by the user. The construction of the query involves unpacking variables (*using `*params`*) to pass them securely to the database execution function.
@@ -147,7 +131,7 @@ The user can sort by:
 - Number of laps
 
 *The user can sort by any of these categories Ascending OR Descending via 2 select boxes*.
-### <a name="track">@app.route("/track/\<int:id\>/")</a>
+#### @app.route("/track/\<int:id\>/")
 This route returns `track.html` with the placeholders in the template being replaced with the relevant information of the track based on the `<int:id>` that was passed into the url. It also queries the `winners` SQL table to find the most recent winning drivers at this track.
 ```python
 @app.route("/track/<int:id>/")
@@ -164,9 +148,9 @@ def goToTrack(id):
         )
 ```
 
-## <a name="templates">**/templates**</a>
+## **/templates**
 
-### <a name="layout.html">layout.html</a>
+### layout.html
 This is the central template file that jinja will use for all pages in this project.
 ```jinja
 {% extends "layout.html" %}
@@ -175,7 +159,7 @@ This is the central template file that jinja will use for all pages in this proj
 {% endblock %}
 ```
 
-### <a name="index.html">index.html</a>
+### index.html
 To break down the components of the project, I will start with the index page linked to the "/" flask route. This webpage displays the headings for questions that many new F1 fans might have, such as what is a *Sprint Race* and how does it differ from a normal race weekend, *how many points* are given at the end of the race, etc. The images can also be clicked on on larger screen sizes to open up a modal window. This was achieved by utilising code from the publicly available code from [Lightbox2](https://lokeshdhakar.com/projects/lightbox2/). I added my own javascript to the provided code to disable the modal window if the width was *smaller than 768px*:
 ```javascript
 function closeLightbox() {
@@ -194,13 +178,13 @@ function closeLightbox() {
 ```
 Some of this code was analysed using ChatGPT, but all I used it for was to find out which classes and elements to remove to override the existing css from Lightbox2.
 
-### <a name="tracks.html">tracks.html</a>
+### tracks.html
 
 This file styles the page which shows the users the list of tracks. It uses `display:grid;` to create dynamic columns.
 
 
 
-### <a name="track.html">track.html</a>
+### track.html
 
 I had to look into the documentation of jinja2 to achieve what I wanted with the **/track/\<int:id\>/** route. By passing in the `id` variable to the route, a user will see the url as **/track/1/** if they are looking at the track with the id of 1. If the user enters the url manually and makes a mistake or mis-spelling, the user with be re-directed to **error.html** which uses flasks in-built errorHandler. I learned about the error handler from [GeeksforGeeks](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/). It has since been modified to accept any error.
 ```python
@@ -217,7 +201,7 @@ The actual content of the page will show the user around 3 paragraphs of informa
 This folder within **`/templates`** stores all of the svg snippets for the tracks. They are named as `track_{{ track_id }}.html`, so they will easily correspond to the track's id.
 
 ---
-## <a name="static">**/static**</a>
+## **/static**
 ### **/static/css**
 
 #### fonts.css
@@ -294,7 +278,6 @@ A free icon to show on the `#scrollToTop` button on each page.
 
 #### lightbox-plus-jquery.min.js
 This file was downloaded as part of the *Lightbox2* plugin. This file also bundles **jQuery** into the project.
-
 #### loader.js
 
 This script usese the `window.onload` method to ensure all media is loaded, then hides the loading animation overlay.
